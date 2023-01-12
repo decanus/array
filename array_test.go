@@ -1,0 +1,37 @@
+package array_test
+
+import (
+	"testing"
+
+	"github.com/decanus/array"
+)
+
+func TestInsertAt(t *testing.T) {
+	data := []int{3}
+
+	data = array.InsertAt(data, 1, 4)
+	data = array.InsertAt(data, 0, 1)
+	data = array.InsertAt(data, 1, 2)
+
+	if !array.Equal(data, []int{1, 2, 3, 4}) {
+		t.Error("items were not inserted as expected")
+	}
+}
+
+func TestEqualWhenArraysDoNotMatchInLength(t *testing.T) {
+	if array.Equal([]int{1, 2}, []int{1, 2, 3, 4}) {
+		t.Error("array equal returned true when arrays do not match")
+	}
+}
+
+func TestEqualWhenArraysDoNotMatch(t *testing.T) {
+	if array.Equal([]int{1, 2, 3, 5}, []int{1, 2, 3, 4}) {
+		t.Error("array equal returned true when arrays do not match")
+	}
+}
+
+func TestEqualWhenArraysMatch(t *testing.T) {
+	if !array.Equal([]int{1, 2, 3, 4}, []int{1, 2, 3, 4}) {
+		t.Error("array equal returned false when arrays match")
+	}
+}
