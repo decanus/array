@@ -43,7 +43,7 @@ func TestContains(t *testing.T) {
 		t.Error("contains returned true when item is not in array")
 	}
 
-	if array.Contains(data, 4) {
+	if !array.Contains(data, 4) {
 		t.Error("contains returned false when item is in array")
 	}
 }
