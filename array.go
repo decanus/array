@@ -28,3 +28,14 @@ func Equal[T comparable](a []T, b []T) bool {
 
 	return true
 }
+
+// Contains returns whether an element is contained in an array
+func Contains[T comparable](data []T, v T) bool {
+	for _, d := range data {
+		if d == v {
+			return true
+		}
+	}
+
+	return false
+}
