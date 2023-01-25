@@ -1,6 +1,7 @@
 package array_test
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/decanus/array"
@@ -45,5 +46,21 @@ func TestContains(t *testing.T) {
 
 	if !array.Contains(data, 4) {
 		t.Error("contains returned false when item is in array")
+	}
+}
+
+func TestMap(t *testing.T) {
+	data := []int{5, 4}
+
+	mapped, err := array.Map(data, func(v int) (string, error) {
+		return fmt.Sprintf("%d", v), nil
+	})
+
+	if err != nil {
+		t.Error("unexpected error in mapping")
+	}
+
+	if !array.Equal(mapped, []string{"5", "4"}) {
+		t.Error("mapping did not return expected result")
 	}
 }
