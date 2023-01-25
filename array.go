@@ -41,11 +41,11 @@ func Contains[T comparable](data []T, v T) bool {
 }
 
 // Map returns an array containing the results of a mapping
-func Map[V, T any](data []V, fn func(V) (T, error)) ([]T, error) {
+func Map[V, T any](data []V, fn func(int, V) (T, error)) ([]T, error) {
 	res := make([]T, len(data))
 
 	for i, v := range data {
-		m, err := fn(v)
+		m, err := fn(i, v)
 		if err != nil {
 			return nil, err
 		}

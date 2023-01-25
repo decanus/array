@@ -52,7 +52,7 @@ func TestContains(t *testing.T) {
 func TestMap(t *testing.T) {
 	data := []int{5, 4}
 
-	mapped, err := array.Map(data, func(v int) (string, error) {
+	mapped, err := array.Map(data, func(_, v int) (string, error) {
 		return fmt.Sprintf("%d", v), nil
 	})
 
