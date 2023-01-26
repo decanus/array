@@ -64,3 +64,15 @@ func TestMap(t *testing.T) {
 		t.Error("mapping did not return expected result")
 	}
 }
+
+func TestFilter(t *testing.T) {
+	data := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+
+	filtered := array.Filter(data, func(_, n int) bool {
+		return n%2 == 0
+	})
+
+	if !array.Equal(filtered, []int{2, 4, 6, 8, 10}) {
+		t.Error("filter did not return expected result")
+	}
+}

@@ -40,7 +40,7 @@ func Contains[T comparable](data []T, v T) bool {
 	return false
 }
 
-// Map returns an array containing the results of a mapping
+// Map returns an array containing the results of a array
 func Map[V, T any](data []V, fn func(int, V) (T, error)) ([]T, error) {
 	res := make([]T, len(data))
 
@@ -54,4 +54,17 @@ func Map[V, T any](data []V, fn func(int, V) (T, error)) ([]T, error) {
 	}
 
 	return res, nil
+}
+
+// Filter returns an array containing the filtered results of an array
+func Filter[T any](data []T, fn func(int, T) bool) []T {
+	res := make([]T, 0)
+
+	for i, v := range data {
+		if fn(i, v) {
+			res = append(res, v)
+		}
+	}
+
+	return res
 }
