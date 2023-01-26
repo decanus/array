@@ -76,3 +76,15 @@ func TestFilter(t *testing.T) {
 		t.Error("filter did not return expected result")
 	}
 }
+
+func TestReduce(t *testing.T) {
+	data := []int{1, 2, 3, 4}
+
+	res := array.Reduce(0, data, func(x, y int) int {
+		return x + y
+	})
+
+	if res != 10 {
+		t.Error("reduce did not return expected result")
+	}
+}
