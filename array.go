@@ -70,10 +70,10 @@ func Filter[T any](data []T, fn func(int, T) bool) []T {
 }
 
 // Reduce returns the result of combining the elements of an array using a closure
-func Reduce[T any](initial T, data []T, fn func(T, T) T) T {
+func Reduce[V, T any](initial V, data []T, fn func(V, T) V) V {
 	res := initial
-	for _, t := range data {
-		res = fn(res, t)
+	for _, v := range data {
+		res = fn(res, v)
 	}
 
 	return res
