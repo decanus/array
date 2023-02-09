@@ -88,3 +88,14 @@ func TestReduce(t *testing.T) {
 		t.Error("reduce did not return expected result")
 	}
 }
+
+func TestIntersection(t *testing.T) {
+	a := []int{1, 2, 3, 4, 9, 12}
+	b := []int{1, 2, 3, 4, 5, 6, 7}
+
+	res := array.Intersection(a, b)
+
+	if !array.Equal(res, []int{1, 2, 3, 4}) {
+		t.Error("intersection did not return expected result")
+	}
+}

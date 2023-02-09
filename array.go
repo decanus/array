@@ -78,3 +78,10 @@ func Reduce[V, T any](initial V, data []T, fn func(V, T) V) V {
 
 	return res
 }
+
+// Intersection returns the intersection of two arrays
+func Intersection[T comparable](a []T, b []T) []T {
+	return Filter(a, func(_ int, v T) bool {
+		return Contains(b, v)
+	})
+}
