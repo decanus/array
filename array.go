@@ -85,3 +85,14 @@ func Intersection[T comparable](a []T, b []T) []T {
 		return Contains(b, v)
 	})
 }
+
+// First returns the first element matching a condition
+func First[T any](data []*T, fn func(*T) bool) *T {
+	for _, v := range data {
+		if fn(v) {
+			return v
+		}
+	}
+
+	return nil
+}

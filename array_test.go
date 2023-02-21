@@ -99,3 +99,19 @@ func TestIntersection(t *testing.T) {
 		t.Error("intersection did not return expected result")
 	}
 }
+
+func TestFirst(t *testing.T) {
+	type data struct {
+		id, val int
+	}
+
+	arr := []*data{{id: 1, val: 5}, {id: 2, val: 5}, {id: 3, val: 10}, {id: 4, val: 9}}
+
+	res := array.First(arr, func(v *data) bool {
+		return v.val == 10
+	})
+
+	if res.id != 3 {
+		t.Error("first did not return expected result")
+	}
+}
