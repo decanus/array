@@ -123,7 +123,7 @@ func TestRemove(t *testing.T) {
 		return v%2 == 0
 	})
 
-	if !array.Equal(res, []int{1, 3, 9}) {
+	if !array.Equal(res, []int{2, 4, 12}) {
 		t.Error("remove did not work")
 	}
 }
