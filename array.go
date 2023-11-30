@@ -96,3 +96,15 @@ func First[T any](data []*T, fn func(*T) bool) *T {
 
 	return nil
 }
+
+// RemoveIf removes elements matching a condition
+func RemoveIf[T any](data []T, fn func(T) bool) []T {
+	res := make([]T, 0)
+	for _, v := range data {
+		if fn(v) {
+			res = append(res, v)
+		}
+	}
+
+	return res
+}

@@ -115,3 +115,15 @@ func TestFirst(t *testing.T) {
 		t.Error("first did not return expected result")
 	}
 }
+
+func TestRemove(t *testing.T) {
+	a := []int{1, 2, 3, 4, 9, 12}
+
+	res := array.RemoveIf(a, func(v int) bool {
+		return v%2 == 0
+	})
+
+	if !array.Equal(res, []int{1, 3, 9}) {
+		t.Error("remove did not work")
+	}
+}
